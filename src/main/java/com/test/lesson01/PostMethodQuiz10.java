@@ -10,6 +10,7 @@ public class PostMethodQuiz10 extends HttpServlet {
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
-		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
 	}
 }

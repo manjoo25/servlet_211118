@@ -38,11 +38,35 @@ public class GetMethodQuiz08 extends HttpServlet {
 		while (iter.hasNext()) {
 			// line에 list의 값이 하나씩 들어가있음
 			String line = iter.next();
+//			if (line.contains(keyword)) {
+//				out.print(line + "<br>");
+//			}
+			
+			// 풀이 1)
+//			int index = line.indexOf(keyword);
+//			if (index > -1) {
+//				// 맛집이 있을 때
+//				StringBuffer sb = new StringBuffer();
+//				sb.append(line);
+//				sb.insert(index, "<b>"); // |맛집 <b> 태그 추가 => <b>맛집
+//				sb.insert(index + keyword.length() + 3, "</b>");
+//				
+//				out.print(sb + "<br>");
+//			}
+			
+			// 풀이 2)
+//			if (line.contains(keyword)) {
+//				String[] words = line.split(keyword); // keyword는 구분자
+//				out.print(words[0] + "<b>" + keyword + "</b>" + words[1] + "<br>");
+//			}
+			
+			// 풀이 3)
 			if (line.contains(keyword)) {
+				line = line.replace(keyword, "<b>" + keyword + "</b>");
 				out.print(line + "<br>");
 			}
 		}
-		
+
 //		list에서 값을 get으로 꺼내옴
 //		for (int i = 0; i < list.size(); i++) {			
 //			if (list.get(i).contains(keyword) == false) {
