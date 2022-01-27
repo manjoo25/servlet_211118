@@ -17,12 +17,14 @@ public class PostMethodQuiz09 extends HttpServlet {
 		response.setContentType("text/html");
 		
 		String name = request.getParameter("name");
-		String introduction = request.getParameter("introduction");
+		String selfIntroduction = request.getParameter("selfIntroduction");
+		
 		
 		PrintWriter out = response.getWriter();
-		out.print("<html><head><title>입사 지원</title></head><body>");
-		out.print("<b>" + name + "</b>님 지원이 완료 되었습니다.");
-		out.print("<h3>지원 내용</h3>" + introduction);
+		out.print("<html><head><title>입사지원서</title></head><body>");
+		out.print("<b>" + name + "</b>님 지원이 완료 되었습니다.<br>");
+		out.print("<h3>지원 내용</h3>");
+		out.print(selfIntroduction);
 		out.print("</body></html>");
 	}
 }
