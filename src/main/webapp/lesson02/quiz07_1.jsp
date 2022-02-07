@@ -51,10 +51,17 @@
 					// check되어 있을 경우 -> boolean 값인 true(X) String 값인 true(O)
 					
 					boolean exclude = filtering != null; // 체크됨 => 4점 이하를 제외한다.
-					
-					// 검색 -> search = menu일 경우 출력 (-> 단, filtering을 했다면 4점 이상만 출력)
 						
 					for (Map<String, Object> item : list) {
+						if (keyword.equals((String)item.get("menu"))) {
+						// == 으로 비교하면 주소값 비교가 됨
+						// 굳이 (String) 캐스팅을 할 필요는 없음
+						// contains로 비교 가능
+						
+							if (exclude && (double)item.get("point") <= 4) { // 체크가 되었고, 4점 이하인 경우 => 제외
+							// object 이기 때문에 double 형으로 바꿔줘야 됨
+								continue;
+							}
 				%>
 					<tr>
 						<td><%= item.get("menu") %></td>
@@ -62,6 +69,7 @@
 						<td><%= item.get("point") %></td>
 					</tr>
 				<%
+						}
 					}
 				%>
 			</tbody>
@@ -82,13 +90,13 @@
 						if (keyword.equals(list.get(i).get("menu")) | keyword.equals(list.get(i).get("name"))) {
 							
 							if (filtering == null) {
-								%>
-								<tr>
-									<td><%= list.get(i).get("menu") %></td>
-									<td><%= list.get(i).get("name") %></td>
-									<td><%= list.get(i).get("point") %></td>
-								</tr>
-								<%
+				%>
+					<tr>
+						<td><%= list.get(i).get("menu") %></td>
+						<td><%= list.get(i).get("name") %></td>
+						<td><%= list.get(i).get("point") %></td>
+					</tr>
+				<%
 							} else {
 								// filtering이 null이 아니라면 check -> 4점 이하 제외
 								double point = (double)list.get(i).get("point");
