@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입사 지원</title>
- <!-- bootstrap CDN link -->
+<title>길이 변환</title>
+<!-- bootstrap CDN link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -12,19 +14,39 @@
 
 </head>
 <body>
+
+	<%
+		int length = Integer.valueOf(request.getParameter("length"));
+		String[] types = request.getParameterValues("type");
+	%>
+	
 	<div class="container">
-		<h1>입사 지원</h1>
-		<form method="post" action="/servlet/quiz09">
-			<input type="text" class="form-control col-4" name="name" placeholder="이름을 입력하세요.">
+		<h1>길이 변환 결과</h1>
+		
+		<h3><%= length %>cm<hr>
+		
+		<h2>	
+		<%
+			String printType = null;
 			
-			<div class="form-group">
-				<label for="selfIntroduction">자기소개서</label>
-				<textarea class="form-control" id="selfIntroduction" name="selfIntroduction" rows=10></textarea>
-			</div>
-			
-			<!-- w-100 or btn-block -->
-			<button type="submit" class="btn btn-primary w-100"> 저장</button>
-		</form>
+			for (String type : types) {
+				
+				if (type.equals("inch")) {
+					double inch = length / 2.54;
+					out.print(inch + "in<br>");
+				} else if (type.equals("yard")) {
+					double yard = length / 91.44;
+					out.print(yard + "yd<br>");
+				} else if (type.equals("feet")) {
+					double feet = length / 30.48;
+					out.print(feet + "ft<br>");
+				} else if (type.equals("meter")) {
+					double meter = length / 100.0;
+					out.print(meter + "m<br>");
+				}
+			}
+		%>
+		</h2>
 	</div>
 </body>
 </html>
