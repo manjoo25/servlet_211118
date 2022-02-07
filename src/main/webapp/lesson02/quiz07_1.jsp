@@ -33,47 +33,73 @@
 	list.add(map);
 %>
 	<div class="container">
-		<h1>검색 결과</h1>
-		<table class="table">
-			<tr>
-				<th>메뉴</th>
-				<th>상호</th>
-				<th>별점</th>
-			</tr>
-			<%
-				String search = request.getParameter("search");
-				String filtering = request.getParameter("filtering");
-				
-				// 검색 -> search = menu일 경우 출력 (-> 단, filtering을 했다면 4점 이상만 출력)
-				
-				/* Iterator<String> iter = map.keySet().iterator();
-				
-				while (iter.hasNext()) {
-					String searchList = iter.next(); */
+		<h1 class="text-center">검색 결과</h1>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>메뉴</th>
+					<th>상호</th>
+					<th>별점</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					String keyword = request.getParameter("keyword");
+					// 체크박스(getParameterValues)여도 한 개일 때는 그대로(getParameter)
+					String filtering = request.getParameter("filtering");
+					// 해제되어 있을 경우 null
+					// check되어 있을 경우 -> boolean 값인 true(X) String 값인 true(O)
 					
-				for (int i = 0; i < list.size(); i++) {
+					boolean exclude = filtering != null; // 체크됨 => 4점 이하를 제외한다.
+					
+					// 검색 -> search = menu일 경우 출력 (-> 단, filtering을 했다면 4점 이상만 출력)
 						
-					if (search.equals(list.get(i).get("menu")) | search.equals(list.get(i).get("name"))) {
+					for (Map<String, Object> item : list) {
+				%>
+					<tr>
+						<td><%= item.get("menu") %></td>
+						<td><%= item.get("name") %></td>
+						<td><%= item.get("point") %></td>
+					</tr>
+				<%
+					}
+				%>
+			</tbody>
+			<%-- <tbody>
+				<%
+					String keyword = request.getParameter("keyword");
+					String filtering = request.getParameter("filtering");
+					
+					// 검색 -> search = menu일 경우 출력 (-> 단, filtering을 했다면 4점 이상만 출력)
+					
+					/* Iterator<String> iter = map.keySet().iterator();
+					
+					while (iter.hasNext()) {
+						String searchList = iter.next(); */
 						
-						if (filtering == null) {
-							// filtering이 null이 아니라면 check -> 4점 이하 제외
+					for (int i = 0; i < list.size(); i++) {
 							
-			%>
-			<tr>
-				<td><%= list.get(i).get("menu") %></td>
-				<td><%= list.get(i).get("name") %></td>
-				<td><%= list.get(i).get("point") %></td>
-			</tr>
-			<%
-						} else {
-							double point = (double)list.get(i).get("point");
-							if (point >= 4.0) {
-								out.print("<tr><td>" + list.get(i).get("menu") + "</td><td>" + list.get(i).get("name") + "</td><td>" + list.get(i).get("point") + "</td></tr>");
+						if (keyword.equals(list.get(i).get("menu")) | keyword.equals(list.get(i).get("name"))) {
+							
+							if (filtering == null) {
+								%>
+								<tr>
+									<td><%= list.get(i).get("menu") %></td>
+									<td><%= list.get(i).get("name") %></td>
+									<td><%= list.get(i).get("point") %></td>
+								</tr>
+								<%
+							} else {
+								// filtering이 null이 아니라면 check -> 4점 이하 제외
+								double point = (double)list.get(i).get("point");
+								if (point >= 4.0) {
+									out.print("<tr><td>" + list.get(i).get("menu") + "</td><td>" + list.get(i).get("name") + "</td><td>" + list.get(i).get("point") + "</td></tr>");
+								}
 							}
-						}
-					}				
-				}
-			%>
+						}				
+					}
+				%>
+			</tbody> --%>
 		</table>
 	</div>
 </body>

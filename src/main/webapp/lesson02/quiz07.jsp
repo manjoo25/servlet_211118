@@ -19,10 +19,13 @@
 		<h1>메뉴 검색</h1>
 		<form method="post" action="/lesson02/quiz07_1.jsp">
 			<div class="d-flex my-2">
-				<input type="text" class="form-control col-3 mr-2" name="search" placeholder="메뉴를 검색하세요">
+				<input type="text" class="form-control col-3 mr-2" name="keyword" placeholder="메뉴를 검색하세요">
 				<div class="mt-1">
-					<input type="checkbox" name="filtering" value="filtering" class="mt-2 mr-1">
-					<spanclass>4점 이하 제외</span>
+					<label class="mt-2 ml-1">
+						<input type="checkbox" name="filtering" value="true">
+						<!-- 해제되어 있을 경우 null boolean 값인 true가 아닌 String 값인 true -->
+						4점 이하 제외
+					</label>
 				</div>
 			</div>
 			<input type="submit" value="검색" class="btn btn-success">
