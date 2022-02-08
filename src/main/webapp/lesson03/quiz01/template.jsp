@@ -13,33 +13,34 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	<style>
-		#wrap {width:100%; height:900px;}
-		.logo {height:80px}
+		#wrap {width:100%;}
+		.logo {height:70px}
 		header {font-size:30px}
-		section {height:750px}
-		.bottom {height:70px; background-color:yellow}
+		section {height:100%}
+		.nav-link:hover {color:black;}
+		a {color:white;}
+		/* .bottom {height:70px; background-color:yellow} */
 	</style>
 </head>
 <body>
 	<div id="wrap" class="container">
-		<div class="logo d-flex justify-content-center align-items-center">
-			<header class="text-danger font-weight-bold">Sk Broadband IPTV</header>
-		</div>
-		<section class="menu-bar bg-secondary">
+		<jsp:include page="header.jsp"/>
+		<section class="menu-bar">
 			<div class="menu bg-danger">
 				<ul class="nav nav-fill">
-					<li class="nav-item"><a href="" class="nav-link">전체</a></li>
-					<li class="nav-item"><a href="" class="nav-link">지상파</a></li>
-					<li class="nav-item"><a href="" class="nav-link">드라마</a></li>
-					<li class="nav-item"><a href="" class="nav-link">예능</a></li>
-					<li class="nav-item"><a href="" class="nav-link">영화</a></li>
-					<li class="nav-item"><a href="" class="nav-link">스포츠</a></li>
+					<li class="nav-item"><a href="<jsp:include page="menu.jsp"/>" class="nav-link">전체</a></li>
+					<li class="nav-item"><a href="<jsp:include page="menu.jsp"/>" class="nav-link">지상파</a></li>
+					<li class="nav-item"><a href="<jsp:include page="menu.jsp"/>" class="nav-link">드라마</a></li>
+					<li class="nav-item"><a href="<jsp:include page="menu.jsp"/>" class="nav-link">예능</a></li>
+					<li class="nav-item"><a href="<jsp:include page="menu.jsp"/>" class="nav-link">영화</a></li>
+					<li class="nav-item"><a href="<jsp:include page="menu.jsp"/>" class="nav-link">스포츠</a></li>
 				</ul>
 			</div>
+			<div class="content">
+				<jsp:include page="content.jsp"/>
+			</div>
+			<jsp:include page="footer.jsp"/>
 		</section>
-		<div class="bottom d-flex justify-content-center align-items-center">
-			<footer>Copyright 2021. marondal All Rights Reserved.</footer>
-		</div>
 	</div>
 </body>
 </html>
