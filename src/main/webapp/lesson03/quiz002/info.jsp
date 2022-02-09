@@ -84,21 +84,25 @@ musicList.add(musicInfo);
 %>
 
 <%
-	String search = request.getParameter("search");
-	String title = request.getParameter("title");
+String search = request.getParameter("search");
+String title = request.getParameter("title");
 %>
 
 <%
-	for (Map<String, Object> music:musicList) {
-		if (music.get("title").equals(title) | music.get("title").equals(search)) {
-%>
-<%
-		}
+for (Map<String, Object> list : musicList) {
+
+	Iterator<String> iter = musicInfo.keySet().iterator();
+	while (iter.hasNext()) {
+		String info = iter.next();
+		/* Map<String, Object> music = list.get(info);
+		if (book.get(music) != null) {
+		} */
 	}
+	/* if (title.equals(list.get(i).musicInfo("menu")) | list.get("title").equals(search) == true) { */
 %>
 <h3>곡 정보</h3>
 <div class="d-flex">
-	<img src="" alt="photo" width="150px" class="m-3">
+	<img src="<%=%>" alt="photo" width="150px" class="m-3">
 	<div>
 		<h1 class="title"></h1>
 		<small class="singer font-weight-bold text-success"></small> <small
@@ -111,3 +115,6 @@ musicList.add(musicInfo);
 <h3>가사 정보</h3>
 <hr>
 <small class="text-secondary">가사 정보 없음</small>
+<%
+}
+%>
