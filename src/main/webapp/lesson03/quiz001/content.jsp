@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 
 <%
@@ -137,36 +137,23 @@ map = new HashMap<String, String>() {
 };
 list.add(map);
 %>
-<section>
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>채널</th>
-				<th>채널명</th>
-				<th>카테고리</th>
-			</tr>
-		</thead>
-		<tbody>
-		<%
-			String category = request.getParameter("category");
-		
-			for (Map <String, String> item:list) {
-				// 카테고리가 null이 아니고, 카테고리가 일치하지 않을 때 skip
-				// 전체는 카테고리가 null
-				// 간단명료,,, 싱기하당,,, 우에,,,
-				if (category != null && item.get("category").equals(category) == false) {
-					continue;
-				} else {
-		%>
-			<tr>
-				<td><%= item.get("ch") %></td>
-				<td><%= item.get("name") %></td>
-				<td><%= item.get("category") %></td>
-			</tr>
-		<%
-				}
-			}
-		%>
-		</tbody>
-	</table>
-</section>
+
+<table class="table text-center">
+	<tr>
+		<th>채널</th>
+		<th>채널명</th>
+		<th>카테고리</th>
+	</tr>
+
+	<%
+	for (Map<String, String> chanel : list) {
+	%>
+	<tr>
+		<td><%=chanel.get("ch")%></td>
+		<td><%=chanel.get("name")%></td>
+		<td><%=chanel.get("category")%></td>
+	</tr>
+	<%
+	}
+	%>
+</table>

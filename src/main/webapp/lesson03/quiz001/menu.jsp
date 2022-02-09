@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 
 <%
@@ -137,36 +137,45 @@ map = new HashMap<String, String>() {
 };
 list.add(map);
 %>
-<section>
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>채널</th>
-				<th>채널명</th>
-				<th>카테고리</th>
-			</tr>
-		</thead>
-		<tbody>
-		<%
-			String category = request.getParameter("category");
-		
-			for (Map <String, String> item:list) {
-				// 카테고리가 null이 아니고, 카테고리가 일치하지 않을 때 skip
-				// 전체는 카테고리가 null
-				// 간단명료,,, 싱기하당,,, 우에,,,
-				if (category != null && item.get("category").equals(category) == false) {
-					continue;
-				} else {
-		%>
-			<tr>
-				<td><%= item.get("ch") %></td>
-				<td><%= item.get("name") %></td>
-				<td><%= item.get("category") %></td>
-			</tr>
-		<%
-				}
-			}
-		%>
-		</tbody>
-	</table>
-</section>
+
+<%
+	String category = request.getParameter("category");
+%>
+
+
+<div class="menu bg-danger">
+	<ul class="nav nav-fill">
+		<li class="nav-item"><a href="template.jsp" class="nav-link">전체</a></li>
+		<li class="nav-item"><a href="template.jsp?category=지상파"
+			class="nav-link">지상파</a></li>
+		<li class="nav-item"><a href="template.jsp?category=드라마"
+			class="nav-link">드라마</a></li>
+		<li class="nav-item"><a href="template.jsp?category=예능"
+			class="nav-link">예능</a></li>
+		<li class="nav-item"><a href="template.jsp?category=영화"
+			class="nav-link">영화</a></li>
+		<li class="nav-item"><a href="template.jsp?category=스포츠"
+			class="nav-link">스포츠</a></li>
+	</ul>
+</div>
+
+<table class="table text-center">
+	<tr>
+		<th>채널</th>
+		<th>채널명</th>
+		<th>카테고리</th>
+	</tr>
+	<%
+	for (Map<String, String> chanel : list) {
+		if (chanel.get("category").equals(category)) {
+	%>
+	<tr>
+		<td><%=chanel.get("ch")%></td>
+		<td><%=chanel.get("name")%></td>
+		<td><%=chanel.get("category")%></td>
+	</tr>
+	<%
+		}
+	}
+	%>
+</table>

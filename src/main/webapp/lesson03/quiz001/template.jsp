@@ -12,20 +12,26 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
-
 	<style>
-		header {height:80px;}
-		/* nav {height:50px;} */
-		/* section {height:500px;} */
-		footer {height:50px;}
+		#wrap {width:100%;}
+		.logo {height:70px}
+		header {font-size:30px}
+		section {height:100%}
+		.nav-link:hover {color:black;}
+		a {color:white;}
+		/* .bottom {height:70px; background-color:yellow} */
 	</style>
 </head>
 <body>
-	<div class="container">
-		<jsp:include page="header.jsp"></jsp:include>
-		<jsp:include page="menu.jsp"></jsp:include>
-		<jsp:include page="content.jsp"></jsp:include>
-		<jsp:include page="footer.jsp"></jsp:include>
+	<div id="wrap" class="container">
+		<jsp:include page="header.jsp"/>
+		<section class="menu-bar">
+			<jsp:include page="menu.jsp"/>
+			<%-- <div class="content">
+				<jsp:include page="content.jsp"/>
+			</div> --%>
+			<jsp:include page="footer.jsp"/>
+		</section>
 	</div>
 </body>
 </html>
