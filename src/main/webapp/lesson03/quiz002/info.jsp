@@ -85,32 +85,31 @@ musicList.add(musicInfo);
 
 <%
 String search = request.getParameter("search");
-String title = request.getParameter("title");
+String type = request.getParameter("id");
+
+int id = Integer.valueOf(type);
 %>
 
 <%
-
 Map<String, Object> target = new HashMap<>();
 for (Map<String, Object> music : musicList) {
-	if (music.get("title").equals(title)) {
+	if ((Integer)music.get("id") == id) {
 		target = music;
 		break;
 	}
 }
 %>
-<%
-%>
 <h3>곡 정보</h3>
 <div class="d-flex">
-	<img src="<%= musicInfo.get("thumbnail") %>" alt="photo"
-		width="150px" class="m-3">
+	<img src="<%=target.get("thumbnail")%>" alt="photo" width="150px"
+		class="m-3">
 	<div>
-		<h1 class="title"><%= musicInfo.get("title") %></h1>
-		<small class="singer font-weight-bold text-success"><%= musicInfo.get("singer") %></small><br>
-		<small class="album text-secondary">앨범 <%= musicInfo.get("album") %></small><br>
-		<small class="time text-secondary">재생시간 <%= musicInfo.get("time") %></small><br>
-		<small class="composer text-secondary">작곡가 <%= musicInfo.get("composer") %></small><br>
-		<small class="lyricist text-secondary">작사가 <%= musicInfo.get("lyricist") %></small>
+		<h1 class="title"><%=target.get("title")%></h1>
+		<small class="singer font-weight-bold text-success"><%=target.get("singer")%></small><br>
+		<small class="album text-secondary">앨범 <%=target.get("album")%></small><br>
+		<small class="time text-secondary">재생시간 <%=target.get("time")%></small><br>
+		<small class="composer text-secondary">작곡가 <%=target.get("composer")%></small><br>
+		<small class="lyricist text-secondary">작사가 <%=target.get("lyricist")%></small>
 	</div>
 </div>
 <h3>가사 정보</h3>
