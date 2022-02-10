@@ -110,7 +110,7 @@ musicList.add(musicInfo);
 				%>
 				<tr>
 					<td><%=list.get("id")%></td>
-					<td><a href="template.jsp"><%=list.get("title")%></td>
+					<td><a href="info_template.jsp?id=<%= list.get("id") %>"><%=list.get("title")%></td>
 					<td><%=list.get("album")%></td>
 				</tr>
 				<%

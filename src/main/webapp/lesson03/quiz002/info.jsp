@@ -84,30 +84,36 @@ musicList.add(musicInfo);
 %>
 
 <%
-	String search = request.getParameter("search");
-	String title = request.getParameter("title");
+String search = request.getParameter("search");
+String type = request.getParameter("id");
+
+int id = Integer.valueOf(type);
 %>
 
 <%
-	for (Map<String, Object> music:musicList) {
-		if (music.get("title").equals(title) | music.get("title").equals(search)) {
-%>
-<%
-		}
+Map<String, Object> target = new HashMap<>();
+for (Map<String, Object> music : musicList) {
+	if ((Integer)music.get("id") == id) {
+		target = music;
+		break;
 	}
+}
 %>
 <h3>곡 정보</h3>
 <div class="d-flex">
-	<img src="" alt="photo" width="150px" class="m-3">
+	<img src="<%=target.get("thumbnail")%>" alt="photo" width="150px"
+		class="m-3">
 	<div>
-		<h1 class="title"></h1>
-		<small class="singer font-weight-bold text-success"></small> <small
-			class="album text-secondary"></small> <small
-			class="time text-secondary"></small> <small
-			class="composer text-secondary"></small> <small
-			class="lyricist text-secondary"></small>
+		<h1 class="title"><%=target.get("title")%></h1>
+		<small class="singer font-weight-bold text-success"><%=target.get("singer")%></small><br>
+		<small class="album text-secondary">앨범 <%=target.get("album")%></small><br>
+		<small class="time text-secondary">재생시간 <%=target.get("time")%></small><br>
+		<small class="composer text-secondary">작곡가 <%=target.get("composer")%></small><br>
+		<small class="lyricist text-secondary">작사가 <%=target.get("lyricist")%></small>
 	</div>
 </div>
 <h3>가사 정보</h3>
 <hr>
 <small class="text-secondary">가사 정보 없음</small>
+<%
+%>
