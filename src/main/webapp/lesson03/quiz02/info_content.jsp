@@ -89,13 +89,29 @@ musicList.add(musicInfo);
 	// Map <String, Object> target = new HashMap<>(); // {}
 	Map <String, Object> target = null;
 	
-	int id = Integer.valueOf(request.getParameter("id")); // id는 원래 int형으로 int로 받아오는 것이 좋다
-	// out.print("############### id:" + id);
+	// 1. 목록에서 클릭한 경우 (id값)
+	if (request.getParameter("id") != null) {
+		
+		int id = Integer.valueOf(request.getParameter("id")); // id는 원래 int형으로 int로 받아오는 것이 좋다
+		// out.print("############### id:" + id);
+		for (Map <String, Object> music:musicList) {
+			if (id == (int)music.get("id")) { // Object형으로 int로 캐스팅해얗함
+				target = music;
+				break; // 불필요한 반복문을 줄이기 위해
+			}
+		}
+	}
 	
-	for (Map <String, Object> music:musicList) {
-		if (id == (int)music.get("id")) { // Object형으로 int로 캐스팅해얗함
-			target = music;
-			break; // 불필요한 반복문을 줄이기 위해
+	// 2. 상단에서 검색한 경우 (search값)
+	if (request.getParameter("search") != null) {
+		String search = request.getParameter("search");
+		// out.print("######## search:" + search);
+		
+		for (Map <String, Object> music:musicList) {
+			if (search.equals(music.get("title"))) { // 만약 error가 뜨면 캐스팅 해주면 됨
+				target = music;
+				break;
+			}
 		}
 	}
 	
