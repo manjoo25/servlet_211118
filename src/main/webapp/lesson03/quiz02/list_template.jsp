@@ -20,7 +20,7 @@
 		heater .search {width:1050px;}
 		
 		nav {height:40px}
-		section {height:500px}
+		/* section {height:500px} */
 		footer {height:100px}
 	</style>
 </head>

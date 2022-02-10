@@ -11,10 +11,25 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+	<style>
+		a:hover {text-decoration:none;}
+		
+		#wrap {width:1200px;}
+		header {height:100px}
+		heater .logo {width:150px;}
+		heater .search {width:1050px;}
+		
+		nav {height:40px}
+		/* section {height:500px} */
+		footer {height:100px}
+	</style>
 </head>
 <body>
 	<div id="wrap">
+		<jsp:include page="header.jsp"/>
+		<jsp:include page="menu.jsp"/>
+		<jsp:include page="info_content.jsp"/>
+		<jsp:include page="footer.jsp"/>
 	</div>
 </body>
 </html>
