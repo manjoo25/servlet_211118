@@ -20,8 +20,8 @@
 			 -> url 목록(select 쿼리) - quiz02_1.jsp (즐겨찾기 목록) 위험해따,,
 	
 	2) 유저 삭제: url 목록 - quiz02_1.jsp => 링크 클릭
-			 -> 서블릿(delete 쿼리) - 
-			 -> 유저 목록-ex02_1.jsp(새로고침 시 삭제 되어있는 표가 보임)	
+			 -> 서블릿(delete 쿼리) - Lesson04Quiz02Delete.java
+			 -> url 목록 - quiz02_1.jsp(새로고침 시 링크가 삭제)	
  --%>
 
 <body>
