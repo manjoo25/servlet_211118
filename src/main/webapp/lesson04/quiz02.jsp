@@ -16,7 +16,6 @@
 <%--
 	1) url 추가: 인풋 폼 - quiz02.jsp (즐겨찾기 추가) 완성!!!!
 			 -> 서블릿(insert 쿼리) - Lesson04Quiz02Insert.java (쿼리가 추가되는 class 만들기) 완성...?!...!
-			 insert 가 안되는 이유는,,!?!?!?,,, 뭘까,,,,ㅠㅠ
 			 -> url 목록(select 쿼리) - quiz02_1.jsp (즐겨찾기 목록) 위험해따,,
 	
 	2) 유저 삭제: url 목록 - quiz02_1.jsp => 링크 클릭
