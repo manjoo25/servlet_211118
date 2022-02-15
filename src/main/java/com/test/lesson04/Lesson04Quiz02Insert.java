@@ -21,22 +21,22 @@ public class Lesson04Quiz02Insert extends HttpServlet {
 		String url = request.getParameter("url");
 		
 		// DB 연결
-		MysqlService mysqlService = MysqlService.getInstance();
-		mysqlService.connection();
+		MysqlService mysql = MysqlService.getInstance();
+		mysql.connection();
 		
 		// insert?
 		String insertQuery = "insert into `favorites` (`name`, `url`)"
 				+ "values ('" + name + "', '" + url + "')";
 		try {
-			mysqlService.update(insertQuery);
+			mysql.update(insertQuery);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		// DB 연결 해제
-		mysqlService.disconnection();
+		mysql.disconnection();
 		
 		// 리다이렉트
-		response.sendRedirect("/lesson04/quiz02_1.jsp");
+		response.sendRedirect("/lesson04/quiz02.jsp");
 	}
 }
