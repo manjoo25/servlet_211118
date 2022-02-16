@@ -15,19 +15,37 @@
 
 </head>
 <body>
+<%-- import 하기!!! --%>
 <%
 	List<String> goodsList = Arrays.asList(new String[]{ 
 	    "저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"
 	});
 %>
 	<div class="container">
-		<h1>장보기 목록</h1>
-		<table class="table">
-			<tr>
-				<th>번호</th>
-				<th>품목</th>
-			</tr>
+		<h1 class="text-center">장보기 목록</h1>
+		<!-- 글자 가운데 정렬 -->
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>품목</th>
+				</tr>
+			</thead>
+			<tbody>
 			<%
+				/* 일반 for문
+				   강사님이 하신건데 완전 깔꼼그자체,,,*/
+				for (int i = 0; i < goodsList.size(); i++) {
+			%>
+				<tr>
+					<td><%= i + 1 %></td>
+					<td><%= goodsList.get(i) %></td>
+				</tr>
+			<%
+				}
+			%>
+			
+			<%-- <%
 				Iterator<String> iter = goodsList.iterator();
 				
 				int count = 0;
@@ -41,7 +59,8 @@
 			</tr>
 			<%
 				}
-			%>
+			%> --%>
+			</tbody>
 		</table>
 	</div>
 </body>
